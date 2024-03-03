@@ -1,13 +1,16 @@
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
+import { fontFamily } from "tailwindcss/defaultTheme";
+
+// const { fontFamily } = require("tailwindcss/defaultTheme");
 
 const config = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-	],
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
   prefix: "",
   theme: {
     container: {
@@ -18,6 +21,10 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["var(--font-sans)", ...fontFamily.sans],
+        mont: ["var(--font-mont)", ...fontFamily.sans],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -27,14 +34,45 @@ const config = {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+          background: "hsl(var(--background))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
         },
+        success: {
+          lighter: "#d3e5ff",
+          light: "#3291ff",
+          default: "#0070f3",
+          dark: "#0761d1",
+        },
+        warning: {
+          lighter: "#ffefcf",
+          light: "#f7b955",
+          default: "#f5a623",
+          dark: "#ab570a",
+        },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
+        },
+        violet: {
+          lighter: "#d8ccf1",
+          light: "#8a63d2",
+          default: "#7928ca",
+          dark: "#4c2889",
+        },
+        cyan: {
+          lighter: "#aaffec",
+          light: "#79ffe1",
+          default: "#50e3c2",
+          dark: "#29bc9b",
+        },
+        highlight: {
+          purple: "#f81ce5",
+          magenta: "#eb367f",
+          pink: "#ff0080",
+          yellow: "#fff500",
         },
         muted: {
           DEFAULT: "hsl(var(--muted))",
@@ -74,7 +112,7 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
-} satisfies Config
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
+} satisfies Config;
 
-export default config
+export default config;
